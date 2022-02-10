@@ -1,0 +1,3 @@
+﻿  MarioBrosProtoV.cpp
+C:\Users\b017629l.STUDENT\Downloads\repo\MarioBrosProtoV\MarioBrosProtoV\MarioBrosProtoV.cpp(41): warning C4715: 'InitSDL': not all control paths return a value
+  MarioBrosProtoV.vcxproj -> C:\Users\b017629l.STUDENT\Downloads\repo\MarioBrosProtoV\Debug\MarioBrosProtoV.exe
