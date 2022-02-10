@@ -14,6 +14,12 @@ SDL_Window* g_window = nullptr;
 SDL_Renderer* g_renderer = nullptr;
 SDL_Texture* g_texture = nullptr;
 
+//prototypes
+bool InitSDL();
+SDL_Texture* LoadTextureFromFile(string path);
+void CloseSDL();
+void Render();
+void FreeTexture();
 
 //Function prototypes
 bool InitSDL()
@@ -52,7 +58,8 @@ bool InitSDL()
             }
 
         }
-        else {
+        else 
+        {
             cout << "Renderer could not initialise. Error: " << SDL_GetError();
             return false;
         }
@@ -124,7 +131,7 @@ bool InitSDL()
         //Update the Screen
         SDL_RenderPresent(g_renderer);
     }
-    SDL_Texture* LoadTextureFromFile(string path);
+
     SDL_Texture* LoadTextureFromFile(string path)
     {
         //remove memory used for a previous texture
@@ -132,7 +139,7 @@ bool InitSDL()
         SDL_Texture* p_texture = nullptr;
 
         //Load the image
-        SDL_Surface* p_surface = IMG_Load(path.c_str());
+        SDL_Surface* p_surface = IMG_Load(path.c_str());gut
         if (p_surface != nullptr)
         {
             //create the texture from the pixels on the surface
@@ -150,6 +157,7 @@ bool InitSDL()
         //return the texture
         return p_texture;
     }
+
     void FreeTexture()
     {
         //check if texture exists before removing it
