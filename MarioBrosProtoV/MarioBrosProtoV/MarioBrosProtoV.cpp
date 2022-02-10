@@ -139,7 +139,7 @@ bool InitSDL()
         SDL_Texture* p_texture = nullptr;
 
         //Load the image
-        SDL_Surface* p_surface = IMG_Load(path.c_str());gut
+        SDL_Surface* p_surface = IMG_Load(path.c_str());
         if (p_surface != nullptr)
         {
             //create the texture from the pixels on the surface
