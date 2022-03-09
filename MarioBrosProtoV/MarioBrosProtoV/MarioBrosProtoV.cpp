@@ -2,9 +2,12 @@
 //
 
 #include <iostream>
+
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
+
+#include "GameDisplayManager.h"
 #include "Texture2D.h"
 #include "constants.h"
 #include "Commons.h"
@@ -13,30 +16,45 @@ using namespace std;
 
 //Globals
 SDL_Window* g_window = nullptr;
-
-//Image renderers
 SDL_Renderer* g_renderer = nullptr;
-Texture2D* g_texture = nullptr;
+
+GameDisplayManager* g_DisplayManager = nullptr;
+
+Uint32 g_OldTime;
+
 
 //prototypes
 bool InitSDL();
 void CloseSDL();
 void Render();
+bool Update();
 //SDL_Texture* LoadTextureFromFile(string path);
 
-void Render()
+int main(int argc, char* args[])
 {
-    
+    bool quit = false;
 
-    // Clear the screen
-    SDL_SetRenderDrawColor(g_renderer, 0XFF, 0XFF, 0XFF, 0XFF);
-    SDL_RenderClear(g_renderer);
+    //check if sdl was setup correctly
+    if (InitSDL())
+    {
+        g_DisplayManager = new GameDisplayManager(g_renderer, SCREENS::SCREEN_LEVEL1);
 
-    g_texture->Render(Vector2D(), SDL_FLIP_NONE);
+        g_OldTime = SDL_GetTicks();
 
-    //update the screen
-    SDL_RenderPresent(g_renderer);
+
+        //Game Loop
+        while (!quit)
+        {
+            Render();
+            quit = Update();
+        }
+    }
+
+    CloseSDL();
+
+    return 0;
 }
+
 
 /*bool LoadTextureFromFile(std::string path)
 {
@@ -77,11 +95,14 @@ void Render()
 //Function prototypes
 bool InitSDL()
 {
+    //flag to remember if something has failed
+    bool success = true;
+
     //Setup SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
     {
         cout << "SDL did not initialise. Error: " << SDL_GetError();
-        return false;
+        success = true;
     }
     else
     {
@@ -91,44 +112,59 @@ bool InitSDL()
             SCREEN_WIDTH,
             SCREEN_HEIGHT,
             SDL_WINDOW_SHOWN);
+
+
         //did the window get created?
         if (g_window == nullptr)
         {
             //window failed
             cout << "Window was not created. Error: " << SDL_GetError();
-            return false;
+            success = false;
         }
-        g_renderer = SDL_CreateRenderer(g_window, -1, SDL_RENDERER_ACCELERATED);
+        else {
+            g_renderer = SDL_CreateRenderer(g_window, -1, SDL_RENDERER_ACCELERATED);
 
-        if (g_renderer != nullptr)
-        {
-            //init PNG loading
-            int imageFlags = IMG_INIT_PNG;
-            if (!(IMG_Init(imageFlags) & imageFlags))
-            {
-                cout << "SDL_Image could not initialise. Error: " << IMG_GetError();
-                return false;
+            if (g_renderer == nullptr) {
+                cout << "Renderer was not created. Error: " << SDL_GetError();
+                success = false;
             }
+            else
+            {
+                //Initialise PNG loading.
+                int imageFlags = IMG_INIT_PNG;
+                if (!(IMG_Init(imageFlags) && imageFlags)) {
+                    cout << "SDL_Image could not initialise. Error: " << IMG_GetError();
+                    success = false;
+                }
+                else {
+                    /*//Load the background texture
+                    g_texture = new Texture2D(g_renderer);
 
+                    if (!g_texture->LoadFromFile("Images/test.bmp"))
+                    {
+                        cout << "Could not load image file (images/test.bmp). Error: " << endl;
+						success = false;
+                    } */
+                }
+            }
+            
         }
-        else 
-        {
-            cout << "Renderer could not initialise. Error: " << SDL_GetError();
-            return false;
-        }
-
-        //Load the background texture
-        g_texture = new Texture2D(g_renderer);
         
-        if (!g_texture->LoadFromFile("Images/test.bmp"))
-        {
-            return false;
-        }
     }
+
+    return success;
+
 }
 
     void CloseSDL()
     {
+        delete g_DisplayManager;
+        g_DisplayManager = nullptr;
+         
+        //release the renderer
+        SDL_DestroyRenderer(g_renderer);
+        g_renderer = nullptr;
+        
         //release the window
         SDL_DestroyWindow(g_window);
         g_window = nullptr;
@@ -136,64 +172,104 @@ bool InitSDL()
         //quit SDL subsystems
         IMG_Quit();
         SDL_Quit();
-        
-        //clear the texture
-        
-        
-        
-        //release the renderer
-        SDL_DestroyRenderer(g_renderer);
-        g_renderer = nullptr;
-
-        delete g_texture;
-        g_texture = nullptr;
-
     }
 
     
     bool Update()
     {
-        // Event Handler
+        //Flag to check if quiting game.
+        bool success = false;
+
+        //Get the new time.
+        Uint32 newTime = SDL_GetTicks();
+
+        //Event Handler.
         SDL_Event e;
 
-        //get events
+        //Get the events.
         SDL_PollEvent(&e);
 
-        //handle the events
-        switch (e.type)
-        {
-            //click the 'X' to quit
+        //Handle any events.
+        switch (e.type) {
+            //Click the 'X' to quit.
         case SDL_QUIT:
-            return true;
+            success = true;
             break;
 
-            //Additional Keyboard Task to quit
+            //Check for key releases.
+        case SDL_KEYUP:
+            //Check which key was released.
+            switch (e.key.keysym.sym) {
 
+                //Press 'ESCAPE' to quit.
+            case SDLK_ESCAPE:
+                success = true;
+                break;
+            case SDLK_a:
+            case SDLK_d:
+            case SDLK_w:
+            case SDLK_s:
+                /*
+                create a player class
+                must handle:
+                - self animation
+                - store its position
+                */
+                break;
+            case SDLK_SPACE:
+                if (g_DisplayManager->GetCurrentScreen() == SCREENS::SCREEN_LEVEL1) {
+                    g_DisplayManager->ChangeScreen(SCREENS::SCREEN_INTRO);
+                }
+                else {
+                    g_DisplayManager->ChangeScreen(SCREENS::SCREEN_LEVEL1);
+                }
+
+                break;
+            }
+            break;
+
+            //Check for mouse button presses.
+        case SDL_MOUSEBUTTONDOWN:
+            switch (e.button.button) {
+                //Left mouse button was pressed
+            case 1:
+                /*
+                if (_gameState != gsPlaying) {
+                    _gameState = gsPlaying;
+                }
+                */
+                break;
+
+                //Middle mouse button was pressed
+            case 2:
+                success = true;
+                break;
+
+                //Right mouse button was pressed
+            case 3:
+                success = true;
+                break;
+            }
+            break;
         }
 
-        return false;
+        g_DisplayManager->Update((float)(newTime - g_OldTime) / 1000.0f, e);
+
+        //Set the current time to be the old time.
+        g_OldTime = newTime;
+
+        return success;
     }
 
 
-    int main(int argc, char* args[])
+    void Render()
     {
-        
+        // Clear the screen
+        SDL_SetRenderDrawColor(g_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+        SDL_RenderClear(g_renderer);
 
-        //check if sdl was setup correctly
-        if (InitSDL())
-        {
-            //flag to check if we wish to quit
-            bool quit = false;
+        g_DisplayManager->Render();
 
-            //Game Loop
-            while (!quit)
-            {
-                Render();
-                quit = Update();
-            }
-        }
-
-        CloseSDL();
-
-        return 0;
+        //update the screen
+        SDL_RenderPresent(g_renderer);
     }

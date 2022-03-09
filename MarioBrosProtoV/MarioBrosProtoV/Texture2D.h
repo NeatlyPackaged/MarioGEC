@@ -1,13 +1,13 @@
 #pragma once
-#ifndef _TEXTURE2D_H
-#define _TEXTURE2D_H
+#ifndef TEXTURE2D_H
+#define TEXTURE2D_H
 
 #include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_mixer.h>
-#include <string>
+//#include <SDL_image.h>
+//#include <SDL_mixer.h>
+//#include <string>
 #include <iostream>
-#include "commons.h"
+#include "Commons.h"
 
 class Texture2D
 {
@@ -17,7 +17,7 @@ public:
 
     bool LoadFromFile(std::string path);
     void Free();
-    void Render(Vector2D new_position, SDL_RendererFlip flip, double angle = 0.0);
+    void Render(Vector2D new_position, SDL_RendererFlip flip, double angle = 0.0f);
 
     int GetWidth() { return m_width; }
     int GetHeight() { return m_height; }

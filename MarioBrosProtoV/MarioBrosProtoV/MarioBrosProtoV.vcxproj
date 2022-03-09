@@ -141,6 +141,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="CharacterLuigi.cpp" />
+    <ClCompile Include="CharacterMario.cpp" />
+    <ClCompile Include="GameDisplayManager.cpp" />
+    <ClCompile Include="GameIntroDisplay.cpp" />
+    <ClCompile Include="GameLevel1Display.cpp" />
+    <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="MarioBrosProtoV.cpp" />
     <ClCompile Include="Texture2D.cpp" />
   </ItemGroup>
@@ -151,11 +158,21 @@
     <Library Include="SDL2\SDL\SDL2_mixer.lib" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="CharacterLuigi.h" />
+    <ClInclude Include="CharacterMario.h" />
     <ClInclude Include="Commons.h" />
     <ClInclude Include="constants.h" />
+    <ClInclude Include="GameDisplayManager.h" />
+    <ClInclude Include="GameIntroDisplay.h" />
+    <ClInclude Include="GameLevel1Display.h" />
+    <ClInclude Include="GameScreen.h" />
     <ClInclude Include="Texture2D.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="images\BackgroundMB.png" />
+    <Image Include="images\Luigi.png" />
+    <Image Include="images\Mario.png" />
     <Image Include="Images\test.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
