@@ -12,6 +12,7 @@
 class Texture2D
 {
 public:
+    //Creating the variables & Functions for the cpp file to use. These are public meaning they can be called from outside classes if called.
     Texture2D(SDL_Renderer* renderer);
     ~Texture2D();
 
@@ -23,6 +24,7 @@ public:
     int GetHeight() { return m_height; }
     
 private:
+    //Creating the variables & Functions for the cpp file to use. These are privated meaning the members in here can only be called in the members functions.
     SDL_Renderer* m_renderer;
     SDL_Texture* m_texture;
 

@@ -1,6 +1,7 @@
 #ifndef COMMONS_H
 #define COMMONS_H
 
+//The struct class will allow multiple variables to be listed under one name, this one being vector2d.
 struct Vector2D {
 	float x, y;
 
@@ -15,6 +16,7 @@ struct Vector2D {
 	}
 };
 
+//The struct class will allow multiple variables to be listed under one name, this one being rect2d.
 struct Rect2D {
 	float x, y, w, h;
 
@@ -29,6 +31,7 @@ struct Rect2D {
 	}
 };
 
+//The struct class will allow multiple variables to be listed under one name, this one being circle2d.
 struct Circle2D {
 	float x, y, radius;
 
@@ -43,6 +46,7 @@ struct Circle2D {
 	}
 };
 
+//The enum class is used to represent a group of constants, variables that cannot be changed. This one is in relation to the screens.
 enum class SCREENS {
 	SCREEN_INTRO = 0,
 	SCREEN_MENU,
@@ -52,6 +56,7 @@ enum class SCREENS {
 	SCREEN_HIGHSCORES
 };
 
+//The enum class is used to represent a group of constants, variables that cannot be changed. This one is in relation to the Players facing.
 enum class FACING {
 	FACING_LEFT = 0,
 	FACING_RIGHT

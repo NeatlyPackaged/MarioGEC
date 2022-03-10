@@ -1,1 +1,12 @@
-﻿  MarioBrosProtoV.vcxproj -> C:\Users\lukeb\OneDrive\Documents\GitHub\MarioGEC\MarioBrosProtoV\Debug\MarioBrosProtoV.exe
+﻿  Character.cpp
+C:\Users\lukeb\OneDrive\Documents\GitHub\MarioGEC\MarioBrosProtoV\MarioBrosProtoV\Character.cpp(30,74): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\lukeb\OneDrive\Documents\GitHub\MarioGEC\MarioBrosProtoV\MarioBrosProtoV\Character.cpp(65,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\lukeb\OneDrive\Documents\GitHub\MarioGEC\MarioBrosProtoV\MarioBrosProtoV\Character.cpp(65,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  CharacterLuigi.cpp
+  CharacterMario.cpp
+  Collisions.cpp
+  GameDisplayManager.cpp
+  GameLevel1Display.cpp
+  LevelMap.cpp
+  Generating Code...
+  MarioBrosProtoV.vcxproj -> C:\Users\lukeb\OneDrive\Documents\GitHub\MarioGEC\MarioBrosProtoV\Debug\MarioBrosProtoV.exe

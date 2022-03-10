@@ -3,6 +3,7 @@
 #include "constants.h"
 
 Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D startPosition, LevelMap* map) {
+	
 	m_renderer = renderer;
 
 	m_texture = new Texture2D(m_renderer);
@@ -41,7 +42,7 @@ void Character::AddGravity(float deltaTime) {
 		m_jumpForce = 0.0f;
 	}
 	else if (!m_jumping) {
-		m_position.y += 200.0f * deltaTime;
+		m_position.y += GRAVITY * deltaTime;
 	}
 
 }

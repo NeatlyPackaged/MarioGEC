@@ -14,7 +14,7 @@
 //Gravity.
 #define JUMP_FORCE_DECREMENT 300.0f
 #define INITIAL_JUMP_FORCE 300.0f
-#define GRAVITY 200.0f
+#define GRAVITY 100.0f
 
 //Level.
 #define MAP_HEIGHT 13
