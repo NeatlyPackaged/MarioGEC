@@ -10,6 +10,7 @@
 #include "Character.h"
 #include "CharacterMario.h"
 #include "CharacterLuigi.h"
+#include "LevelMap.h"
 
 class Texture2D;
 class Character;
@@ -23,7 +24,10 @@ private:
 	CharacterMario* marioCharacter;
 	CharacterLuigi* luigiCharacter;
 
+	LevelMap* mLevelMap;
+
 	bool SetUpLevel();
+	void SetLevelMap();
 
 public:
 	GameLevel1Display(SDL_Renderer* renderer, SCREENS screen);

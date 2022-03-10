@@ -1,9 +1,8 @@
 #ifndef GAMEINTRODISPLAY_H
 #define GAMEINTRODISPLAY_H
-/* SDL lib */
-#include <SDL.h>
 
-/* usr lib */
+
+#include <SDL.h>
 #include "Commons.h"
 #include "GameScreen.h"
 
