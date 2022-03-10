@@ -24,7 +24,7 @@ private:
 	CharacterMario* marioCharacter;
 	CharacterLuigi* luigiCharacter;
 
-	LevelMap* mLevelMap;
+	LevelMap* m_levelMap;
 
 	bool SetUpLevel();
 	void SetLevelMap();

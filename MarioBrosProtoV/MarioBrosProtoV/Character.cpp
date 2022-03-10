@@ -146,64 +146,7 @@ void Character::Update(float deltaTime, SDL_Event e) {
 		MoveRight(deltaTime);
 	}
 
-	/*
-	//Handle any events.
-	switch (e.type) {
-	case SDL_KEYDOWN:
-		//Check which key was pressed.
-		switch (e.key.keysym.sym) {
-		case SDLK_w:
-		case SDLK_UP:
-			cout << "JUMP!" << endl;
-			break;
-		case SDLK_a:
-		case SDLK_LEFT:
-			mMovingLeft = true;
-			break;
-		case SDLK_d:
-		case SDLK_RIGHT:
-			mMovingRight = true;
-			break;
-		}
-		break;
-	case SDL_KEYUP:
-		//Check which key was released.
-		switch (e.key.keysym.sym) {
-		case SDLK_ESCAPE:
-		case SDLK_w:
-		case SDLK_UP:
-			Jump();
-			break;
-		case SDLK_s:
-			break;
-		case SDLK_a:
-		case SDLK_LEFT:
-			mMovingLeft = false;
-			break;
-		case SDLK_d:
-		case SDLK_RIGHT:
-			mMovingRight = false;
-			break;
-		case SDLK_SPACE:
-			break;
-		}
-		break;
-		//Check for mouse button presses.
-	case SDL_MOUSEBUTTONDOWN:
-		switch (e.button.button) {
-		//Left mouse button was pressed
-		case 1:
-			break;
-		//Middle mouse button was pressed
-		case 2:
-			break;
-		//Right mouse button was pressed
-		case 3:
-			break;
-		}
-		break;
-	}
-	*/
+	
 
 
 }

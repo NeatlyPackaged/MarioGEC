@@ -7,13 +7,13 @@
 #define SCREEN_HEIGHT 416
 
 //Movement. 
-#define MOVEMENT_SPEED 0.75f
+#define MOVEMENT_SPEED 0.02f
 #define TILE_HEIGHT 32
 #define TILE_WIDTH 32
 
 //Gravity.
-#define JUMP_FORCE_DECREMENT 400.0f
-#define INITIAL_JUMP_FORCE 400.0f
+#define JUMP_FORCE_DECREMENT 300.0f
+#define INITIAL_JUMP_FORCE 300.0f
 #define GRAVITY 200.0f
 
 //Level.

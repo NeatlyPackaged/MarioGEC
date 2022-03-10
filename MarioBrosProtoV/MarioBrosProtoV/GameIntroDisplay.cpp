@@ -8,7 +8,7 @@ bool GameIntroDisplay::SetUpLevel() {
 
 	//Load the background texture.
 	m_backgroundTexture = new Texture2D(m_renderer);
-	if (!m_backgroundTexture->LoadFromFile("images/BackGroundMB.png")) {
+	if (!m_backgroundTexture->LoadFromFile("images/test.bmp")) {
 		std::cout << "Failed to load background texture!" << std::endl;
 		success = false;
 	}

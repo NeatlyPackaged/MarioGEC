@@ -1,21 +1,21 @@
 #include "Collisions.h"
 #include "Character.h"
 
-Collisions* Collisions::mInstance = nullptr;
+Collisions* Collisions::m_instance = nullptr;
 
 Collisions::Collisions() {
 }
 
 Collisions* Collisions::Instance() {
-	if (!mInstance) {
-		mInstance = new Collisions;
+	if (!m_instance) {
+		m_instance = new Collisions;
 	}
 
-	return mInstance;
+	return m_instance;
 }
 
 Collisions::~Collisions() {
-	mInstance = nullptr;
+	m_instance = nullptr;
 }
 
 bool Collisions::Circle(Character* character1, Character* character2) {

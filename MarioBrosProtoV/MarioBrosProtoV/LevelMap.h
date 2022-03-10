@@ -13,7 +13,7 @@ public:
 	int GetTileAt(unsigned int h, unsigned int w);
 
 private:
-	int** mMap;
+	int** m_map;
 };
 
 #endif // !LEVELMAP_H

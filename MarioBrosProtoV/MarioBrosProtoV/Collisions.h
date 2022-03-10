@@ -8,7 +8,7 @@ class Character;
 
 class Collisions {
 private:
-	static Collisions* mInstance;
+	static Collisions* m_instance;
 
 	Collisions();
 

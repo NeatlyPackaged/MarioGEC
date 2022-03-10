@@ -32,6 +32,7 @@ bool Update();
 
 int main(int argc, char* args[])
 {
+    //used to check if we want to quit
     bool quit = false;
 
     //check if sdl was setup correctly
