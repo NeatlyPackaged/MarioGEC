@@ -4,7 +4,8 @@
 
 #include "constants.h"
 
-class LevelMap {
+class LevelMap 
+{
 public:
 	//Creating the variables & Functions for the cpp file to use. These are public meaning they can be called from outside classes if called.
 	LevelMap(int map[MAP_HEIGHT][MAP_WIDTH]);

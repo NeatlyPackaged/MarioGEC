@@ -5,7 +5,8 @@
 #include "GameIntroDisplay.h"
 #include "GameLevel1Display.h"
 
-GameDisplayManager::GameDisplayManager(SDL_Renderer* renderer, SCREENS startScreen) {
+GameDisplayManager::GameDisplayManager(SDL_Renderer* renderer, SCREENS startScreen) 
+{
 	m_renderer = renderer;
 
 	m_currentScreen = nullptr;
@@ -13,31 +14,37 @@ GameDisplayManager::GameDisplayManager(SDL_Renderer* renderer, SCREENS startScre
 	ChangeScreen(startScreen);
 }
 
-GameDisplayManager::~GameDisplayManager() {
+GameDisplayManager::~GameDisplayManager() 
+{
 	m_renderer = nullptr;
 
 	delete m_currentScreen;
 	m_currentScreen = nullptr;
 }
 
-void GameDisplayManager::Render() {
+void GameDisplayManager::Render() 
+{
 	m_currentScreen->Render();
 }
 
-void GameDisplayManager::Update(float deltaTime, SDL_Event e) {
+void GameDisplayManager::Update(float deltaTime, SDL_Event e) 
+{
 	m_currentScreen->Update(deltaTime, e);
 }
 
-void GameDisplayManager::ChangeScreen(SCREENS newScreen) {
+void GameDisplayManager::ChangeScreen(SCREENS newScreen) 
+{
 	//Clear up old screen.
-	if (m_currentScreen != nullptr) {
+	if (m_currentScreen != nullptr) 
+	{
 		delete m_currentScreen;
 	}
 
 	GameLevel1Display* tmpLevel1Screen = nullptr;
 	GameIntroDisplay* tmpIntroScreen = nullptr;
 
-	switch (newScreen) {
+	switch (newScreen) 
+	{
 	case SCREENS::SCREEN_INTRO:
 		tmpIntroScreen = new GameIntroDisplay(m_renderer, newScreen);
 		m_currentScreen = (GameScreen*)tmpIntroScreen;
@@ -61,6 +68,7 @@ void GameDisplayManager::ChangeScreen(SCREENS newScreen) {
 	}
 }
 
-SCREENS GameDisplayManager::GetCurrentScreen() {
+SCREENS GameDisplayManager::GetCurrentScreen() 
+{
 	return m_currentScreen->GetScreenID();
 }

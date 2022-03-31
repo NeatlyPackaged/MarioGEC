@@ -11,7 +11,8 @@ using namespace std;
 
 class Texture2D;
 
-class Character {
+class Character 
+{
 protected:
 	//Creating the variables & Functions for the cpp file to use. These are protected meaning they can be used in a specific class but never in any other.
 	SDL_Renderer* m_renderer;
@@ -22,6 +23,8 @@ protected:
 	bool m_canJump;
 	float m_jumpForce;
 	float m_collisionRadius;
+	bool m_movingLeft;
+	bool m_movingRight;
 
 	virtual void MoveLeft(float deltaTime);
 	virtual void MoveRight(float deltaTime);
@@ -36,8 +39,7 @@ private:
 
 public:
 	//Creating the variables & Functions for the cpp file to use. These are public meaning they can be called from outside classes if called.
-	bool m_movingLeft;
-	bool m_movingRight;
+	
 
 	Character(SDL_Renderer* renderer, string imagePath, Vector2D startPosition, LevelMap* map);
 	~Character();

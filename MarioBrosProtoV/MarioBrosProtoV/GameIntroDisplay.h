@@ -9,7 +9,8 @@
 class Texture2D;
 
 class GameIntroDisplay :
-	public GameScreen {
+	public GameScreen 
+{
 private:
 	//Creating the variables & Functions for the cpp file to use. These are privated meaning the members in here can only be called in the members functions.
 	Texture2D* m_backgroundTexture;

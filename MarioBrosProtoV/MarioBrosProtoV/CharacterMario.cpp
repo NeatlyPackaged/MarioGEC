@@ -1,7 +1,8 @@
 #include "CharacterMario.h"
 
 CharacterMario::CharacterMario(SDL_Renderer* renderer, string imagePath, Vector2D startPosition, LevelMap* map)
-	: Character(renderer, imagePath, startPosition, map) {
+	: Character(renderer, imagePath, startPosition, map) 
+{
 	SetFacingDirection(FACING::FACING_RIGHT);
 }
 
@@ -9,8 +10,10 @@ CharacterMario::~CharacterMario()
 {
 }
 
-void CharacterMario::Render() {
-	switch (GetFacingDirection()) {
+void CharacterMario::Render() 
+{
+	switch (GetFacingDirection())
+	{
 	case FACING::FACING_LEFT:
 		Character::Render(SDL_FLIP_HORIZONTAL);
 		break;
@@ -22,14 +25,17 @@ void CharacterMario::Render() {
 	}
 }
 
-void CharacterMario::Update(float deltaTime, SDL_Event e) {
+void CharacterMario::Update(float deltaTime, SDL_Event e) 
+{
 	Character::Update(deltaTime, e);
 
 	//Handle any events.
-	switch (e.type) {
+	switch (e.type) 
+	{
 	case SDL_KEYDOWN:
 		//Check which key was pressed.
-		switch (e.key.keysym.sym) {
+		switch (e.key.keysym.sym) 
+		{
 		case SDLK_a:
 			m_movingLeft = true;
 			m_movingRight = false;
@@ -48,7 +54,8 @@ void CharacterMario::Update(float deltaTime, SDL_Event e) {
 
 	case SDL_KEYUP:
 		//Check which key was released.
-		switch (e.key.keysym.sym) {
+		switch (e.key.keysym.sym) 
+		{
 
 		case SDLK_a:
 			m_movingLeft = false;

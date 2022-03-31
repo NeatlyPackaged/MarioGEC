@@ -1,7 +1,8 @@
 #include "CharacterLuigi.h"
 
 CharacterLuigi::CharacterLuigi(SDL_Renderer* renderer, string imagePath, Vector2D startPosition, LevelMap* map)
-	: Character(renderer, imagePath, startPosition, map) {
+	: Character(renderer, imagePath, startPosition, map) 
+{
 	SetFacingDirection(FACING::FACING_LEFT);
 }
 
@@ -9,8 +10,10 @@ CharacterLuigi::~CharacterLuigi()
 {
 }
 
-void CharacterLuigi::Render() {
-	switch (GetFacingDirection()) {
+void CharacterLuigi::Render() 
+{
+	switch (GetFacingDirection()) 
+	{
 	case FACING::FACING_LEFT:
 		Character::Render(SDL_FLIP_NONE);
 		break;
@@ -22,14 +25,17 @@ void CharacterLuigi::Render() {
 	}
 }
 
-void CharacterLuigi::Update(float deltaTime, SDL_Event e) {
+void CharacterLuigi::Update(float deltaTime, SDL_Event e) 
+{
 	Character::Update(deltaTime, e);
 
 	//Handle any events.
-	switch (e.type) {
+	switch (e.type) 
+	{
 	case SDL_KEYDOWN:
 		//Check which key was pressed.
-		switch (e.key.keysym.sym) {
+		switch (e.key.keysym.sym) 
+		{
 		case SDLK_LEFT:
 			m_movingLeft = true;
 			m_movingRight = false;
@@ -48,7 +54,8 @@ void CharacterLuigi::Update(float deltaTime, SDL_Event e) {
 
 	case SDL_KEYUP:
 		//Check which key was released.
-		switch (e.key.keysym.sym) {
+		switch (e.key.keysym.sym) 
+		{
 
 		case SDLK_LEFT:
 			m_movingLeft = false;

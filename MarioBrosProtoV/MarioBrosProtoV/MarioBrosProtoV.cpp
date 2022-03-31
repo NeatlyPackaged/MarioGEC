@@ -218,10 +218,12 @@ bool InitSDL()
                 */
                 break;
             case SDLK_SPACE:
-                if (g_DisplayManager->GetCurrentScreen() == SCREENS::SCREEN_LEVEL1) {
+                if (g_DisplayManager->GetCurrentScreen() == SCREENS::SCREEN_LEVEL1) 
+                {
                     g_DisplayManager->ChangeScreen(SCREENS::SCREEN_INTRO);
                 }
-                else {
+                else 
+                {
                     g_DisplayManager->ChangeScreen(SCREENS::SCREEN_LEVEL1);
                 }
 
@@ -231,7 +233,8 @@ bool InitSDL()
 
             //Check for mouse button presses.
         case SDL_MOUSEBUTTONDOWN:
-            switch (e.button.button) {
+            switch (e.button.button) 
+            {
                 //Left mouse button was pressed
             case 1:
                 /*

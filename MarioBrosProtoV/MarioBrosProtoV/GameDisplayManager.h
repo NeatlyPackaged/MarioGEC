@@ -9,7 +9,8 @@
 
 class GameScreen;
 
-class GameDisplayManager {
+class GameDisplayManager 
+{
 private:
 	//Creating the variables & Functions for the cpp file to use. These are privated meaning the members in here can only be called in the members functions.
 	SDL_Renderer* m_renderer;
